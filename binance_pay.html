@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay with Binance</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            margin: 10px auto 0;
+            background-color: #2196F3;
+        }
+        .payment-option {
+            margin-bottom: 30px;
+        }
+        .payment-option select {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .payment-details img.qr-code {
+            display: block;
+            margin: 20px auto 10px;
+            width: 200px;
+        }
+        .payment-details p.qr-description {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+    <script>
+        function showPaymentOption(option) {
+            var options = document.querySelectorAll('.payment-details');
+            options.forEach(function(opt) {
+                opt.style.display = 'none';
+            });
+            if (option) {
+                document.getElementById(option).style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Pay with Binance</h1>
+        <p>Select the currency you want to pay with:</p>
+        <div class="payment-option">
+            <select onchange="showPaymentOption(this.value)">
+                <option value="" disabled selected>Choose currency</option>
+                <option value="usdt-trc20">USDT TRC20</option>
+                <option value="tron">TRON (TRX)</option>
+            </select>
+        </div>
+        <div id="usdt-trc20" class="payment-details" style="display:none;">
+            <img src="https://chatcloud.github.io/trc20/trc20.png" alt="USDT TRC20 QR Code" class="qr-code">
+            <p class="qr-description">USDT TRC20 QR Code</p>
+            <input type="text" value="TC7Gs7tJDbhLpAYC9MbD6MaREoc4qeuuL3" readonly>
+        </div>
+        <div id="tron" class="payment-details" style="display:none;">
+            <img src="https://tron.interfacechatcloud.fun/tron.png" alt="TRON QR Code" class="qr-code">
+            <p class="qr-description">TRON QR Code</p>
+            <input type="text" value="TWS9Civ3ihPCeaXFLyS6p1VZyz4pRSpdDV" readonly>
+        </div>
+    </div>
+</body>
+</html>
